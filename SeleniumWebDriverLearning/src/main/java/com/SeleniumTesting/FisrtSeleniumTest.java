@@ -13,7 +13,6 @@ public class FisrtSeleniumTest {
 
 	public static void main(String[] args) {
 		WebDriver driver = new ChromeDriver();
-		//driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 		doSearch(driver, "cars");
 		clickImagesLink(driver);
 		clickOnImage(driver);
@@ -25,10 +24,11 @@ public class FisrtSeleniumTest {
 	 */
 	private static void clickOnImage(WebDriver driver) {
 			
-		//WebElement myImageElement = driver.findElements(By.cssSelector("img[class='rg_ic rg_i']")).get(0);
-
-		//myImageElement.click();
-		driver.findElement(By.id("ocRp6IDmQhQL3M:")).click();
+		//We set an explicit wait
+				WebDriverWait wait = new WebDriverWait(driver,30);
+			    WebElement element = wait.until(
+			    		ExpectedConditions.elementToBeClickable(By.id("ocRp6IDmQhQL3M:")));
+			    element.click();
 
 	}
 	
@@ -58,17 +58,13 @@ public class FisrtSeleniumTest {
 		//Get a web element
 		WebElement searchField = driver.findElement(By.name("q"));
 		
+		
 		//Pass a string to the text box element
 		searchField.sendKeys(searchString);
 		
-		//Find the search button
-		WebElement searchButton = driver.findElement(By.name("btnK"));
+		searchField.submit();
 		
-		//Click the button
-		searchButton.click();
 		
-		//This would have done the same thing
-		//searchButton.submit();
 	}
 
 }
