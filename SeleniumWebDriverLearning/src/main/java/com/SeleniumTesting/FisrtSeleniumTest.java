@@ -13,6 +13,7 @@ public class FisrtSeleniumTest {
 
 	public static void main(String[] args) {
 		WebDriver driver = new ChromeDriver();
+		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 		doSearch(driver, "cars");
 		clickImagesLink(driver);
 		clickOnImage(driver);
@@ -24,11 +25,7 @@ public class FisrtSeleniumTest {
 	 */
 	private static void clickOnImage(WebDriver driver) {
 			
-		//We set an explicit wait
-				WebDriverWait wait = new WebDriverWait(driver,30);
-			    WebElement element = wait.until(
-			    		ExpectedConditions.elementToBeClickable(By.id("ocRp6IDmQhQL3M:")));
-			    element.click();
+		driver.findElement(By.id("ocRp6IDmQhQL3M:")).click();
 
 	}
 	
