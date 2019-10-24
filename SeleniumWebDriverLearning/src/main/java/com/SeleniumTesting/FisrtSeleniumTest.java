@@ -9,7 +9,28 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class FisrtSeleniumTest {
 
 	public static void main(String[] args) {
-		doSearch(("cars"));
+		WebDriver driver = new ChromeDriver();
+		doSearch(driver, "cars");
+		clickImagesLink(driver);
+		clickOnImage(driver);
+		
+	}
+
+	/**
+	 *Finds the first image and clicks
+	 */
+	private static void clickOnImage(WebDriver driver) {
+		
+		WebElement imageLink = driver.findElements(By.className("images")).get(0);
+		imageLink.click();
+	}
+	
+	/**
+	 *Finds the images link and clicks
+	 */
+	private static void clickImagesLink(WebDriver driver) {
+		WebElement imageLink = driver.findElements(By.linkText("images")).get(0);
+		imageLink.click();
 	}
 
 	/**
@@ -19,9 +40,9 @@ public class FisrtSeleniumTest {
 	 * the search text box.
 	 *  
 	 */
-	private static void doSearch(String searchString) {
+	private static void doSearch(WebDriver driver, String searchString) {
 		//System.setProperty("webdriver.chrome.driver", "c:/dev/tools/chromedriver.exe");
-		WebDriver driver = new ChromeDriver();
+
 
 		driver.get("https://www.google.com/");
 		
