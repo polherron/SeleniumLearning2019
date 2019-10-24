@@ -25,7 +25,11 @@ public class FisrtSeleniumTest {
 	 */
 	private static void clickOnImage(WebDriver driver) {
 			
-				driver.findElement(By.id("ocRp6IDmQhQL3M:")).click();
+		//WebElement myImageElement = driver.findElements(By.cssSelector("img[class='rg_ic rg_i']")).get(0);
+
+		//myImageElement.click();
+		driver.findElement(By.id("ocRp6IDmQhQL3M:")).click();
+
 	}
 	
 	/**
