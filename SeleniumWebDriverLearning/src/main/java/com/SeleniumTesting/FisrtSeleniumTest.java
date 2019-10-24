@@ -1,5 +1,8 @@
 package com.SeleniumTesting;
 
+import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,6 +13,7 @@ public class FisrtSeleniumTest {
 
 	public static void main(String[] args) {
 		WebDriver driver = new ChromeDriver();
+		//driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 		doSearch(driver, "cars");
 		clickImagesLink(driver);
 		clickOnImage(driver);
@@ -20,16 +24,17 @@ public class FisrtSeleniumTest {
 	 *Finds the first image and clicks
 	 */
 	private static void clickOnImage(WebDriver driver) {
-		
-		WebElement imageLink = driver.findElements(By.className("images")).get(0);
-		imageLink.click();
+			
+				driver.findElement(By.id("ocRp6IDmQhQL3M:")).click();
 	}
 	
 	/**
 	 *Finds the images link and clicks
 	 */
 	private static void clickImagesLink(WebDriver driver) {
-		WebElement imageLink = driver.findElements(By.linkText("images")).get(0);
+		
+		WebElement imageLink = driver.findElements(By.linkText("Images")).get(0);
+		
 		imageLink.click();
 	}
 
