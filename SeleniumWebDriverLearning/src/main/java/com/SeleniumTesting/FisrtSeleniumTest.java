@@ -27,6 +27,20 @@ public class FisrtSeleniumTest {
 	 */
 	private static void clickOnImage(WebDriver driver) {
 			
+		WebElement image = fluentWaitById(driver, "ocRp6IDmQhQL3M:");
+		//click on the image
+		image.click();
+		//close~ browser
+		//driver.close() ;
+
+		
+	}
+
+	/**
+	 * @param driver
+	 * @return
+	 */
+	private static WebElement fluentWaitById(WebDriver driver, String id) {
 		//Declaring a fluent wait with the timeout of 
 		//30 seconds and the frequency is set to 
 		//5 seconds by ignoring "NoSuchElementException
@@ -41,18 +55,13 @@ public class FisrtSeleniumTest {
 			//Here we are using a java Function Interface.  
 			//See: https://www.geeksforgeeks.org/function-interface-in-java-with-examples/
 		
-			WebElement image = wait.until(new Function<WebDriver, WebElement>(){
+			WebElement element = wait.until(new Function<WebDriver, WebElement>(){
 		
 			public WebElement apply(WebDriver driver ) {
-				return driver.findElement(By.id("ocRp6IDmQhQL3M:"));
+				return driver.findElement(By.id(id));
 			}
 		});
-		//click on the image
-		image.click();
-		//close~ browser
-		//driver.close() ;
-
-		
+		return element;
 	}
 	
 	/**
@@ -65,15 +74,13 @@ public class FisrtSeleniumTest {
 		imageLink.click();
 	}
 
-	/**
-	 * Calls a chrome dri
-	 * 
-	 * ver and opens 
+	/** 
+	 * Calls a Chrome driver and opens 
 	 * the browser at google.com
 	 * then does a search based on the name of
 	 * the search text box.
 	 *  
-	 */
+	 **/
 	private static void doSearch(WebDriver driver, String searchString) {
 		//System.setProperty("webdriver.chrome.driver", "c:/dev/tools/chromedriver.exe");
 
