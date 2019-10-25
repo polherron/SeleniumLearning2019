@@ -27,7 +27,7 @@ public class FisrtSeleniumTest {
 	 */
 	private static void clickOnImage(WebDriver driver) {
 			
-		WebElement image = fluentWaitById(driver, "ocRp6IDmQhQL3M:");
+		WebElement image = fluentWaitByClassName(driver, "rg_i ");
 		//click on the image
 		image.click();
 		//close~ browser
@@ -59,6 +59,34 @@ public class FisrtSeleniumTest {
 		
 			public WebElement apply(WebDriver driver ) {
 				return driver.findElement(By.id(id));
+			}
+		});
+		return element;
+	}
+	
+	/**
+	 * @param driver
+	 * @return
+	 */
+	private static WebElement fluentWaitByClassName(WebDriver driver, String className) {
+		//Declaring a fluent wait with the timeout of 
+		//30 seconds and the frequency is set to 
+		//5 seconds by ignoring "NoSuchElementException
+		//Frequency is set to 5 seconds and the maximum time is set 
+	 	//30 seconds
+		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)							
+				.withTimeout(30, TimeUnit.SECONDS) 			
+				.pollingEvery(5, TimeUnit.SECONDS) 			
+				.ignoring(NoSuchElementException.class);
+		
+		
+			//Here we are using a java Function Interface.  
+			//See: https://www.geeksforgeeks.org/function-interface-in-java-with-examples/
+		
+			WebElement element = wait.until(new Function<WebDriver, WebElement>(){
+		
+			public WebElement apply(WebDriver driver ) {
+				return driver.findElement(By.className(className));
 			}
 		});
 		return element;
