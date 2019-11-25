@@ -27,7 +27,7 @@ public class FisrtSeleniumTest {
 	 */
 	private static void clickOnImage(WebDriver driver) {
 			
-		WebElement image = fluentWaitByClassName(driver, "rg_i ");
+		WebElement image = fluentWaitByClassName(driver, "rg_ic");
 		//click on the image
 		image.click();
 		//close~ browser
